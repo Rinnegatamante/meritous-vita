@@ -263,6 +263,7 @@ void ImGui_SetCallback() {
 	ImGui::GetIO().MouseDrawCursor = false;
 	
 	SDL_SetVideoCallback(ImGui_callback);
+	SDL_ShowCursor(SDL_DISABLE);
 	
 	loadImGuiCfg();
 	
