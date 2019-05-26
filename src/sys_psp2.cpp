@@ -9,6 +9,9 @@ extern "C" {
 
 int _newlib_heap_size_user = 192 * 1024 * 1024;
 
+extern int player_gems;
+extern int player_lives;
+
 bool avail[6];
 uint64_t tmr1;
 bool bilinear = true;
@@ -93,6 +96,16 @@ void ImGui_callback() {
 						SDL_SetVideoShader(SDL_SHADER_XBR_2X_FAST);
 					}
 					ImGui::EndMenu();
+				}
+				ImGui::EndMenu();
+			}
+			
+			if (ImGui::BeginMenu("Cheats")){
+				if (ImGui::MenuItem("Give 10.000 Psi Crystals")){
+					player_gems += 10000;
+				}
+				if (ImGui::MenuItem("Give 99 Lives")){
+					player_lives = 99;
 				}
 				ImGui::EndMenu();
 			}
