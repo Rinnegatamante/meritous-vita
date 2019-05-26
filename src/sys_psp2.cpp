@@ -176,12 +176,13 @@ void ImGui_callback() {
 	
 	if (credits_window){
 		ImGui::Begin("Credits", &credits_window);
-		ImGui::TextColored(ImVec4(255, 255, 0, 255), "meritous Vita v.1.0");
+		ImGui::TextColored(ImVec4(255, 255, 0, 255), "meritous Vita v.1.1");
 		ImGui::Text("Port Author: Rinnegatamante");
 		ImGui::Separator();
 		ImGui::TextColored(ImVec4(255, 255, 0, 255), "Patreon Supporters:");
-		ImGui::Text("XandridFire");
+		ImGui::Text("Tain Sueiras");
 		ImGui::Text("RaveHeart");
+		ImGui::Text("nobodywasishere");
 		ImGui::Separator();
 		ImGui::TextColored(ImVec4(255, 255, 0, 255), "Special thanks to:");
 		ImGui::Text("rsn8887 for fixing shaders for vitaGL usage");
