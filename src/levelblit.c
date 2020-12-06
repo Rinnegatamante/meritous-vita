@@ -44,7 +44,7 @@
 #define PLAYERW 16
 #define PLAYERH 24
 
-#define MERITOUS_VERSION "v 1.1"
+#define MERITOUS_VERSION "v 1.2"
 int RECORDING = 0;
 int PLAYBACK = 0;
 
@@ -548,8 +548,6 @@ int main(int argc, char **argv)
 			SDL_BlitSurface(title_pr, NULL, screen, NULL);
 			
 			draw_text(17, 156, MERITOUS_VERSION, 225 + sin((float)ticker_tick / 15)*30);
-			draw_text(17, 200, "Thanks to all my distinguished patroners:", 225 + sin((float)ticker_tick / 15)*30);
-			draw_text(17, 210, "Tain Sueiras - RaveHeart - nobodywasishere", 225 + sin((float)ticker_tick / 15)*30);
 			if (can_continue) draw_text((SCREEN_W - 14*8)/2, 310, "Continue", 255);
 			draw_text((SCREEN_W - 14*8)/2, 310 + can_continue*10, "New Game", 255);
 			draw_text((SCREEN_W - 14*8)/2, 320 + can_continue*10, "New Game (Wuss mode)", 255);

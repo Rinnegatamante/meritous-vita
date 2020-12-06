@@ -4,10 +4,10 @@ SOURCES		:= src
 			
 INCLUDES	:= src
 
-LIBS = -lSDL_mixer -lSDL_image -lmikmod -lvorbisfile -lvorbis -logg -lsndfile -lSceLibKernel_stub -lScePvf_stub \
-	-lSceAppMgr_stub -lSceCtrl_stub -lSceTouch_stub -lm -lSceAppUtil_stub -lScePgf_stub -ljpeg \
-	-lfreetype -lc -lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAudio_stub -lSceGxm_stub \
-	-lSceDisplay_stub -lSceSysmodule_stub -lSDL -lvitaGL -lSceHid_stub -limgui
+LIBS = -lSDL_mixer -lSDL_image -lmikmod -lvorbisfile -lvorbis -logg -lsndfile -lSceLibKernel_stub \
+	-lScePvf_stub -lSceTouch_stub -lm -lSceAppUtil_stub -lScePgf_stub -ljpeg -lfreetype -lc -lScePower_stub \
+	-lpng16 -lz -lSceSysmodule_stub -lSDL -lSceAudio_stub -lSceHid_stub -limgui -lvitaGL -lSceGxm_stub \
+	-lSceTouch_stub -lmathneon -lSceAppMgr_stub -lSceDisplay_stub -lSceCtrl_stub -lSceCommonDialog_stub
 
 CFILES   := $(foreach dir,$(SOURCES), $(wildcard $(dir)/*.c))
 CPPFILES   := $(foreach dir,$(SOURCES), $(wildcard $(dir)/*.cpp))
@@ -19,7 +19,7 @@ export INCLUDE	:= $(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
-CFLAGS  = $(INCLUDE) -g -Wl,-q -O3
+CFLAGS  = $(INCLUDE) -g -Wl,-q -O2 -ftree-vectorize
 CXXFLAGS  = $(CFLAGS) -fno-exceptions -std=gnu++11 -fpermissive
 ASFLAGS = $(CFLAGS)
 
@@ -31,7 +31,7 @@ $(TARGET).vpk: $(TARGET).velf
 	cp -f param.sfo build/sce_sys/param.sfo
 	
 	#------------ Comment this if you don't have 7zip ------------------
-	7z a -tzip ./$(TARGET).vpk -r ./build/sce_sys ./build/eboot.bin
+	7z a -tzip ./$(TARGET).vpk -r ./build/sce_sys ./build/eboot.bin ./build/shaders
 	#-------------------------------------------------------------------
 
 %.velf: %.elf
